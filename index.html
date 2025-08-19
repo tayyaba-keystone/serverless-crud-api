@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple CRUD</title>
+</head>
+<body>
+  <h2>Serverless CRUD Demo</h2>
+
+  <input id="name" placeholder="Name">
+  <input id="value" placeholder="Value">
+  <button onclick="createItem()">Create</button>
+  <button onclick="listItems()">List Items</button>
+
+  <pre id="output"></pre>
+
+<script>
+const API_BASE = "https://4t8iwmws8e.execute-api.us-east-1.amazonaws.com/dev";  // your API Gateway endpoint
+
+// Create item
+async function createItem() {
+  const nameVal = document.getElementById("name").value;
+  const valueVal = document.getElementById("value").value;
+
+  let res = await fetch(`${API_BASE}/items`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ name: nameVal, value: valueVal })
+  });
+
+  document.getElementById("output").textContent = await res.text();
+}
+
+// List items
+async function listItems() {
+  let res = await fetch(`${API_BASE}/items`);
+  let data = await res.json();   // better to parse JSON
+
+  document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+}
+</script>
+</body>
+</html>
