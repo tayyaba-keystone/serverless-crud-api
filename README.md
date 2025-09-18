@@ -1,7 +1,7 @@
 # Serverless CRUD Application 🚀
 
 This is a Serverless CRUD Demo Application built using **AWS Lambda, API Gateway, DynamoDB, and S3 (for hosting index.html)**.  
-It demonstrates how to Create, Read, Update, and Delete (CRUD) items in DynamoDB using a simple web UI.
+It demonstrates how to Create, Read, Update, and Delete (CRUD) items in DynamoDB table using a simple web UI.
 
 ---
 
